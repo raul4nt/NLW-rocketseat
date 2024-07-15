@@ -10,7 +10,7 @@ class ActivitesRepository:
         cursor = self.__conn.cursor()
         cursor.execute(
             '''
-                INSERT INTO activites
+                INSERT INTO activities
                 (id, trip_id, title, occurs_at)
                 VALUES
                     (?, ?, ?, ?)
@@ -23,10 +23,10 @@ class ActivitesRepository:
         )
         self.__conn.commit()
     
-    def find_activites_from_trip(self, trip_id: str) -> List[Tuple]:
+    def find_activities_from_trip(self, trip_id: str) -> List[Tuple]:
         cursor = self.__conn.cursor()
         cursor.execute(
-            '''SELECT * FROM activites WHERE trip_id = ?''', (trip_id,)
+            '''SELECT * FROM activities WHERE trip_id = ?''', (trip_id,)
         )
         activities = cursor.fetchall()
         return activities
